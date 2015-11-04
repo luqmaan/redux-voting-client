@@ -2,24 +2,25 @@ body {
   font-family: 'Open Sans', sans-serif;
   background-color: #673AB7;
   color: white;
+  text-align: center;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 800px;
 }
 
 /* Voting Screen */
 
 .voting {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
+  border: 1px solid #fff;
   display: flex;
   flex-direction: column;
 
   user-select: none;
 }
 
-.voting button {
+button {
   flex: 1 0 0;
 
   background-color: #673AB7;
@@ -28,21 +29,26 @@ body {
 .voting button:first-child {
   border-bottom: 1px solid white;
 }
-.voting button:active {
+button:active {
   background-color: white;
   color: #311B92;
 }
-.voting button.voted {
+button:hover {
+  background-color: hsla(262, 72%, 37%, 1);
+}
+button.voted {
   background-color: #311B92;
 }
-.voting button:not(.voted) .label {
-  visibility: hidden;
-}
-.voting button .label {
+button .label {
+  margin-top: -20px;
+  padding: 0;
   opacity: 0.87;
 }
-.voting button.votedAgainst * {
+button.votedAgainst * {
   opacity: 0.3;
+}
+button:disabled {
+  background-color: hsla(262, 32%, 27%, 1);
 }
 
 @media only screen and (min-device-width: 500px) {
@@ -58,12 +64,6 @@ body {
 /* Results Screen */
 
 .results {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
   display: flex;
   flex-direction: column;
 }
@@ -99,19 +99,18 @@ body {
   font-size: 2rem;
 }
 
-.results .management {
+.management {
   display: flex;
-
+  margin-top: 20px;
   height: 2em;
-  border-top: 1px solid #aaa;
+  border: 1px solid #aaa;
 }
 
-.results .management button {
+.management button {
   border: 0;
-  background-color: black;
   color: #aaa;
 }
-.results .management .next {
+.management .next {
   flex: 1;
 }
 

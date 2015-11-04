@@ -6,8 +6,14 @@ export default class App extends React.Component {
     return (
       <div>
         <h3>Hello</h3>
-        {this.props.children}
+        <div className="wrapper">
+          {this.props.children}
+        </div>
       </div>
     );
   }
 }
+
+App.propTypes = {
+  children: React.PropTypes.node,
+};

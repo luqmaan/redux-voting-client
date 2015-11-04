@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Next from './Next';
+
+
 export default class Vote extends React.Component {
   getPair() {
     return this.props.pair || [];
@@ -28,8 +31,9 @@ export default class Vote extends React.Component {
   }
 }
 
-// Vote.propTypes = {
-//   hasVoted: React.PropTypes.string,
-//   pair: React.PropTypes.array,
-//   vote: React.PropTypes.func,
-// };
+Vote.propTypes = {
+  hasVoted: React.PropTypes.string,
+  pair: React.PropTypes.object,
+  vote: React.PropTypes.func,
+  next: React.PropTypes.func,
+};

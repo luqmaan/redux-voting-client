@@ -9,10 +9,7 @@ export class Voting extends React.Component {
   render() {
     return (
       <div>
-        <h3> lol</h3>
-        <button onClick={this.props.next} />
-        {this.props.winner ?
-          <Winner ref="winner" winner={this.props.winner} /> :
+        {this.props.winner ? null :
           <Vote {...this.props} />}
       </div>
     );

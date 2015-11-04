@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import * as actionCreators from '../action_creators';
 import Winner from './Winner';
+import Next from './Next';
 
 
 export class Results extends React.Component {
@@ -18,8 +19,8 @@ export class Results extends React.Component {
   render() {
     return (
       this.props.winner ?
-        <Winner ref="winner" winner={this.props.winner} /> :
-        <div className="results">
+        <Winner ref="winner" winner={this.props.winner} restart={this.props.restart} /> :
+        (<div className="results">
           <div className="tally">
             {this.getPair().map(entry =>
               <div key={entry} className="entry">
@@ -29,22 +30,17 @@ export class Results extends React.Component {
                 </div>
               </div>
             )}
+            <Next next={this.props.next} />
+            </div>
           </div>
-          <div className="management">
-            <button ref="next"
-                     className="next"
-                     onClick={this.props.next}>
-              Next
-            </button>
-          </div>
-        </div>
+        )
     );
   }
 }
 
 Results.propTypes = {
-  pair: React.PropTypes.array,
-  tally: React.PropTypes.array,
+  pair: React.PropTypes.object,
+  tally: React.PropTypes.object,
   winner: React.PropTypes.string,
   next: React.PropTypes.func,
 };
@@ -54,7 +50,7 @@ function mapStateToProps(state) {
   return {
     pair: state.getIn(['vote', 'pair']),
     tally: state.getIn(['vote', 'tally']),
-    winner: state.getIn('winner'),
+    winner: state.get('winner'),
   };
 }
 

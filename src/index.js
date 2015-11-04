@@ -25,7 +25,7 @@ const createStoreWithMiddleware = applyMiddleware(
 var store = createStoreWithMiddleware(reducer);
 
 socket.on('state', (state) => {
-  console.log('state', state);
+  console.log('received state', state);
   store.dispatch(setState(state));
 });
 
@@ -33,18 +33,14 @@ socket.on('state', (state) => {
 window.store = store;
 window.socket = socket;
 
-const routes = (
-  <Route component={App}>
-    <Route path="/" component={VotingContainer} />
-    <Route path="/results" component={ResultsContainer} />
-  </Route>
-);
-
 
 ReactDOM.render(
   (
     <Provider store={store}>
-      <Router>{routes}</Router>
+      <App>
+        <VotingContainer />
+        <ResultsContainer />
+      </App>
     </Provider>
   ),
   document.getElementById('app')

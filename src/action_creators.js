@@ -12,3 +12,10 @@ export function next() {
     meta: {remote: true},
   };
 }
+
+export function restart() {
+  return {
+    type: 'RESTART',
+    meta: {remote: true},
+  };
+}

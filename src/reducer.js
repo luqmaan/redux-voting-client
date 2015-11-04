@@ -25,6 +25,8 @@ export default function(state = new Map(), action) {
   console.log('reducer', action);
 
   switch (action.type) {
+  case 'RESTART':
+    return state.clear();
   case 'SET_STATE':
     return resetVote(setState(state, action.state));
   case 'VOTE':
